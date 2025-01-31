@@ -6,9 +6,11 @@
 3. Open this repo on your local machine in Idea
 
 4. Find smart Tomcat plugin in Intellij and install it:
+
 ![img_4.png](img%2Fimg_4.png)
 
 5. Then open run configurations:
+
 ![img_3.png](img/img_3.png)
 
 6. Find and add new configuration 'Smart Tomcat'
