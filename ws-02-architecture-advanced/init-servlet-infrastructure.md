@@ -15,14 +15,14 @@
 
 7. You would see something like 
 
-![img.png](img.png)
+![img.png](img/img_6.png)
 
 8. Point to your Tomcat Server
 
-![img_2.png](img_2.png)
+![img_2.png](img/img_7.png)
 
 9. Notice path to your app
 
-![img_1.png](img_1.png)
+![img_1.png](img/img_8.png)
 
 10. Run this configuration
