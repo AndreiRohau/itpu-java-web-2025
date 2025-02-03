@@ -1,20 +1,24 @@
-ERD
----
-Find 3 exercises in the bottom of the document.
+# ERD
+
+### Find 3 exercises in the bottom of the document.
+
+
+### Note existance of different types of notations
+
 ---
 
-Note existance of different types of notations
----
+# Cardinality types notations
 
-Cardinality types notations
----
 
 ![img_1.png](pics/img_1.png)
 
+![img_11.png](pics/img_11.png)
+
 ![img_2.png](pics/img_2.png)
 
-Notation with Cardinality
 ---
+
+# Notation with Cardinality
 
 ![img_3.png](pics/img_3.png)
 
@@ -26,9 +30,10 @@ Notation with Cardinality
 
 ![img_7.png](pics/img_7.png)
 
-
-SUM UP
 ---
+
+# SUM UP
+
 
 ![img_8.png](pics/img_8.png)
 
