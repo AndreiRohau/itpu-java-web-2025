@@ -30,7 +30,7 @@ where:
 ---
 
 # How to quickly create mockups, prototypes, code snippets with `figma` and `builder.io`:
-1. Visit [figma.com](figma.com)
+1. Visit [figma.com](https://figma.com)
 2. Register and login
 3. Open a `new design file`
 
