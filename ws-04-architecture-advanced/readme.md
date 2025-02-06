@@ -1,14 +1,30 @@
 # Practicaltask format
 
-1. Create a repository.
-2. Prepare a file `README.md` and fill it with:
-   - Defined purpose of your application.
-   - Clarified users' objectives.
-   - Identified most important elements and content for the users.
-3. Develop a mockup and store it in repo as a single file (for ex.: pdf file).
-4. Create an interactive prototype based on the mockup and store a link to it in `README.md`.
-5. Test your prototype and implement changes.
-6. Transfer your prototype to an HTML/JS version.
+1. Create a repository with name format: `wdwj-adv-arch-{name_surname}` - for ex.: `wdwj-adv-arch-amet_azizov`.
+2. Create to folders: `uid`, `dbld` - referring to user-interface-design and database-layer-design tasks accordingly
+3. Database-design task results should be located in `dbld` folder, and user-interface-design task files in `uid`
+4. Final repo structure example:
+```
+wdwj-adv-arch-amet_azizov
+|---dbld
+    |---diagram.(png\jpg\etc.)
+    |---readme.md
+|---uid
+    |---readme.md
+    |---mockup.pdf
+    |---static
+        |---main.html
+        |---login.html
+        |---register.html
+```
+where:
+- `dbld\diagram.png` - erd schema
+- `dbld\readme.md` - notes\descriptions
+- `uid\static` - a folder where html and related files are located (html, js, css)
+- `uid\readme.md` -  a file where the description, goals, link to prototype, etc. are specified
+- `uid\mockup.pdf` - file with visual format of your mockup (so all the webpages as pictures are collected in one file)
+5. Use link to the repository to submit practical task result in learning platform.
+6. DO NOT MISS TERMS
 
 
 ---
@@ -69,7 +85,7 @@
 
 16. Run \ open \ execute the file and test it opens in browser
 
-![img.png](img.png)
+![img_17.png](img%2Fimg_17.png)
 
 17. Snippet of the code is ready
 
