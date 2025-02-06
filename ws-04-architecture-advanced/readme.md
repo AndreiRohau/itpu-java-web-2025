@@ -48,7 +48,7 @@
 
 ![img_7.png](img%2Fimg_7.png)
 
-11. Setup \ register \ login ...
+11. Setup \ register \ login in [https://builder.io/](https://builder.io/)
 12. Choose layer to export in an `easy` mode, and click `export`
 
 ![img_9.png](img%2Fimg_9.png)
