@@ -1,11 +1,13 @@
 package com.arohau.jpa;
 
-import com.arohau.jpa.entity.*;
+import com.arohau.jpa.entity.ActiveEmployee;
+import com.arohau.jpa.entity.Company;
+import com.arohau.jpa.entity.EmployeeProfile;
+import com.arohau.jpa.entity.Salary;
 import com.arohau.jpa.repository.EmployeeRepositoryImpl;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import jakarta.persistence.PersistenceContext;
 
 import java.util.ArrayList;
 import java.util.List;
