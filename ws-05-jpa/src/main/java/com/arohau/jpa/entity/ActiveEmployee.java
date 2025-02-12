@@ -23,4 +23,9 @@ public class ActiveEmployee extends Employee {
     @NonNull
     @Transient
     private Double totalCompensation;
+
+    public void setSalaries(@NonNull List<Salary> salaries) {
+        this.salaries = salaries;
+        totalCompensation = salaries.stream().mapToDouble(Salary::getCurrentSalary).sum();
+    }
 }

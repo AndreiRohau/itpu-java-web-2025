@@ -35,9 +35,6 @@ public class Employee implements Serializable {
     @Column
     private Integer yearsExperience;
 
-    @Transient
-    private Double totalCompensation;
-
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE})
