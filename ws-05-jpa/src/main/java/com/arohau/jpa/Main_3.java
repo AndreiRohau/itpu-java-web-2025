@@ -12,6 +12,7 @@ import jakarta.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
+// Exploring Entity Relationships
 public class Main_3 {
 
     private static EntityManagerFactory entityManagerFactory;

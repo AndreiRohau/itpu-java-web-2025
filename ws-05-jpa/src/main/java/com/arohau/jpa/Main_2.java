@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+// Managing entities
 public class Main_2 {
     private static EntityManagerFactory entityManagerFactory;
 

@@ -7,18 +7,21 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// Understanding transactions
 public class Main_4 {
 
+    private static EntityManagerFactory entityManagerFactory;
+
     public static void main(String[] args) {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         EmployeeRepositoryImpl employeeRepository = new EmployeeRepositoryImpl(entityManager);
 
-        ActiveEmployee employee = new ActiveEmployee();
-        employee.setFName("Rick");
-        employee.setLName("King");
-        employee.setYearsExperience(20);
+        ActiveEmployee employee1 = new ActiveEmployee();
+        employee1.setFName("Rick");
+        employee1.setLName("King");
+        employee1.setYearsExperience(20);
 
         ActiveEmployee employee2 = new ActiveEmployee();
         employee2.setFName("Mary");
@@ -26,19 +29,19 @@ public class Main_4 {
         employee2.setYearsExperience(5);
 
         //set employment history
-        employee.setCompanies(generateCompanies());
+        employee1.setCompanies(generateCompanies());
         employee2.setCompanies(generateCompanies());
 
         //create an EmployeeProfile and associate it to an Employee
-        employee.setProfile(new EmployeeProfile("rKing", "password!", "email@email.com", employee, "Software Engineer"));
-        employee2.setProfile(new EmployeeProfile("mJohns", "password234", "johndoe@email.com", employee, "Project Manager"));
+        employee1.setProfile(new EmployeeProfile("rKing", "password!", "email@email.com", employee1, "Software Engineer"));
+        employee2.setProfile(new EmployeeProfile("mJohns", "password234", "johndoe@email.com", employee2, "Project Manager"));
 
         //set salaries
-        employee.setSalaries(generateSalaries());
+        employee1.setSalaries(generateSalaries());
         employee2.setSalaries(generateSalaries());
 
         //save Employee
-        employeeRepository.save(employee);
+        employeeRepository.save(employee1);
         employeeRepository.save(employee2);
 
         entityManager.close();

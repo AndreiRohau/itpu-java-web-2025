@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
+// Understanding JPA
 public class Main_1 {
 
     private static EntityManagerFactory entityManagerFactory;
