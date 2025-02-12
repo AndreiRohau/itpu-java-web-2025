@@ -10,6 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
+@ToString(callSuper = true)
 @Entity
 @Table(name = "active_employees")
 public class ActiveEmployee extends Employee {

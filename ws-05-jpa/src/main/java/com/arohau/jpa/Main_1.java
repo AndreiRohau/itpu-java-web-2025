@@ -12,11 +12,11 @@ public class Main_1 {
     public static void main(String[] args) {
         entityManagerFactory = Persistence.createEntityManagerFactory("default");
 
-        saveCompany();
+        saveCompany(); // create
+        getCompany(); // read
+        updateCompany(); // update
         getCompany();
-        updateCompany();
-        getCompany();
-        deleteCompany();
+        deleteCompany(); // delete
         getCompany();
 
         entityManagerFactory.close();
