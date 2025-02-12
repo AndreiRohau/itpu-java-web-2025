@@ -2,7 +2,12 @@ package com.arohau.jpa.repository;
 
 import com.arohau.jpa.entity.Employee;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 
+import java.util.List;
 import java.util.Optional;
 
 //isolate the persistence logic for each entity using the Repository pattern
@@ -53,6 +58,49 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         }
 
         entityManager.getTransaction().commit(); //uncomment if not using @Transactional
+    }
+
+    // JPQL query
+    @Override
+    public List<Employee> getEmployeesByExperience(Integer yearsExperience) {
+        Query jpqlQuery = entityManager.createQuery("SELECT e FROM Employee as e WHERE e.yearsExperience > :yearsExperience ORDER BY e.lName");
+        jpqlQuery.setParameter("yearsExperience", yearsExperience);
+        List<Employee> employeesList = jpqlQuery.getResultList();
+
+        return employeesList;
+    }
+
+    // Native Query
+    @Override
+    public List<Employee> getEmployeesByExperienceNativeQuery(Integer yearsExperience) {
+
+        //Note: createNativeQuery is a native SQL query which will return the raw data from the database, not the Entity, need to include class name
+        Query nativeQuery = entityManager.createNativeQuery("SELECT * FROM employees WHERE yearsExperience > :yearsExperience ORDER BY lname", Employee.class);
+        nativeQuery.setParameter("yearsExperience", yearsExperience);
+        List<Employee> employeesList = nativeQuery.getResultList();
+
+        return employeesList;
+    }
+
+    // Native Query
+    @Override
+    public List<Employee> getEmployeesByExperienceCriteriaQuery(Integer yearsExperience) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Employee> criteriaQuery = criteriaBuilder.createQuery(Employee.class);
+        Root<Employee> employeeRoot = criteriaQuery.from(Employee.class);
+
+        entityManager
+                .createQuery(criteriaQuery
+                        .select(employeeRoot)
+                        .where(criteriaBuilder.greaterThan(employeeRoot.get("yearsExperience"), yearsExperience)))
+                .getResultList();
+
+        //Note: createNativeQuery is a native SQL query which will return the raw data from the database, not the Entity, need to include class name
+        Query nativeQuery = entityManager.createNativeQuery("SELECT * FROM employees WHERE yearsExperience > :yearsExperience ORDER BY lname", Employee.class);
+        nativeQuery.setParameter("yearsExperience", yearsExperience);
+        List<Employee> employeesList = nativeQuery.getResultList();
+
+        return employeesList;
     }
 
 }
