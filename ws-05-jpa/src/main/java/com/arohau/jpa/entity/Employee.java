@@ -1,11 +1,21 @@
 package com.arohau.jpa.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name = "employees")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+//@Inheritance(strategy=InheritanceType.JOINED)
+//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Employee implements Serializable {
 
     @Id
@@ -13,66 +23,37 @@ public class Employee implements Serializable {
     @Column(name="employee_id")
     private Long id;
 
+    @NonNull
     @Column
     private String fName;
 
+    @NonNull
     @Column
     private String lName;
 
+    @NonNull
     @Column
     private Integer yearsExperience;
 
     @Transient
     private Double totalCompensation;
 
-    public Employee() {
-    }
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE})
+    @JoinTable(name = "employee_company",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "company_id"))
+    private List<Company> companies = new ArrayList<>();
 
-    public Employee(Long id, String fName, String lName, Integer yearsExperience) {
+    @OneToOne(mappedBy="employee")
+    private EmployeeProfile profile;
+
+    public Employee(Long id, String fName, String lName, Integer yearsExperience, List<Company> companies) {
         this.id = id;
         this.fName = fName;
         this.lName = lName;
         this.yearsExperience = yearsExperience;
+        this.companies = companies;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getfName() {
-        return fName;
-    }
-
-    public String getlName() {
-        return lName;
-    }
-
-    public Integer getYearsExperience() {
-        return yearsExperience;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setfName(String fName) {
-        this.fName = fName;
-    }
-
-    public void setlName(String lName) {
-        this.lName = lName;
-    }
-
-    public void setYearsExperience(Integer yearsExperience) {
-        this.yearsExperience = yearsExperience;
-    }
-
-    public Double getTotalCompensation() {
-        return totalCompensation;
-    }
-
-    public void setTotalCompensation(Double totalCompensation) {
-        this.totalCompensation = totalCompensation;
-    }
-
 }

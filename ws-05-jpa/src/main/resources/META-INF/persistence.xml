@@ -11,6 +11,9 @@
     <class>com.arohau.jpa.entity.Employee</class>
     <class>com.arohau.jpa.entity.Company</class>
     <class>com.arohau.jpa.entity.Salary</class>
+    <class>com.arohau.jpa.entity.EmployeeProfile</class>
+    <class>com.arohau.jpa.entity.ActiveEmployee</class>
+    <class>com.arohau.jpa.entity.RetiredEmployee</class>
 
     <properties>
 <!--        <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>-->

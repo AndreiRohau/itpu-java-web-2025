@@ -1,17 +1,18 @@
 package com.arohau.jpa.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-@Table(name = "companies")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
+@Entity
+@Table(name = "companies")
 public class Company implements Serializable {
 
     @Id
@@ -19,6 +20,7 @@ public class Company implements Serializable {
     @Column(name="company_id")
     private Long id;
 
+    @NonNull
     @Column
     private String name;
 
@@ -31,6 +33,11 @@ public class Company implements Serializable {
     @Column
     private String zipcode;
 
+    @NonNull
     @Column
     private String country;
+
+    @ToString.Exclude
+    @ManyToMany(mappedBy = "companies", fetch = FetchType.LAZY)
+    private List<Employee> employees = new ArrayList<>();
 }

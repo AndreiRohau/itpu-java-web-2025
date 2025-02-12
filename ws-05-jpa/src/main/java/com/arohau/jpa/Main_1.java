@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-public class Main_1_CRUD {
+public class Main_1 {
 
     private static EntityManagerFactory entityManagerFactory;
 
@@ -28,8 +28,7 @@ public class Main_1_CRUD {
 
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        Company company = new Company();
-        company.setName("adidas");
+        Company company = new Company("adidas", "NA");
         entityManager.persist(company);
         transaction.commit();
 
@@ -43,11 +42,10 @@ public class Main_1_CRUD {
 
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-//        Company company = entityManager.find(Company.class, 1);
         List<Company> companies = (List<Company>) entityManager.createNativeQuery("SELECT * FROM companies;", Company.class).getResultList();
         transaction.commit();
 
-//        System.out.println("Result get: " + company);
+//        System.out.println("Result get one by id: " + entityManager.find(Company.class, 1));
         System.out.println("Result: get all" + companies);
         entityManager.close();
     }
