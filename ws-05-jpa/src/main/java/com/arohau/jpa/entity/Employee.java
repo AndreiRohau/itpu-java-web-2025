@@ -43,7 +43,8 @@ public class Employee implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "company_id"))
     private List<Company> companies = new ArrayList<>();
 
-    @OneToOne(mappedBy="employee")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "employee_profile_id")
     private EmployeeProfile profile;
 
     public Employee(Long id, String fName, String lName, Integer yearsExperience, List<Company> companies) {

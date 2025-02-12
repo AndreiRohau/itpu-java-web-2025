@@ -31,8 +31,7 @@ public class EmployeeProfile implements Serializable {
     @Column
     private String title;
 
-    @OneToOne
-    @JoinColumn(name = "employee_id")
+    @OneToOne(mappedBy="profile")
     private Employee employee;
 
     public EmployeeProfile(Long id, String userName, String password, String email, Employee employee, String title) {
