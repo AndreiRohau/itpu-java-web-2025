@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -31,6 +32,7 @@ public class EmployeeProfile implements Serializable {
     @Column
     private String title;
 
+    @ToString.Exclude
     @OneToOne(mappedBy="profile")
     private Employee employee;
 

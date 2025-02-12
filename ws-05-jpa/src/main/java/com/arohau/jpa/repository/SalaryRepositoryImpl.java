@@ -6,7 +6,7 @@ import jakarta.persistence.EntityManager;
 import java.util.Optional;
 
 public class SalaryRepositoryImpl implements SalaryRepository {
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     public SalaryRepositoryImpl(EntityManager entityManager) {
         this.entityManager = entityManager;

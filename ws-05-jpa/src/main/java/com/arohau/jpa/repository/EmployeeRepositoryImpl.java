@@ -2,12 +2,13 @@ package com.arohau.jpa.repository;
 
 import com.arohau.jpa.entity.Employee;
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 
 import java.util.Optional;
 
 //isolate the persistence logic for each entity using the Repository pattern
 public class EmployeeRepositoryImpl implements EmployeeRepository {
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     public EmployeeRepositoryImpl(EntityManager entityManager) {
         this.entityManager = entityManager;

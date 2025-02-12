@@ -6,7 +6,7 @@ import jakarta.persistence.EntityManager;
 import java.util.Optional;
 
 public class CompanyRepositoryImpl implements CompanyRepository{
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     public CompanyRepositoryImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
