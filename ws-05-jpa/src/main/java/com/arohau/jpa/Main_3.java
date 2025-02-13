@@ -1,9 +1,6 @@
 package com.arohau.jpa;
 
-import com.arohau.jpa.entity.ActiveEmployee;
-import com.arohau.jpa.entity.Company;
-import com.arohau.jpa.entity.EmployeeProfile;
-import com.arohau.jpa.entity.Salary;
+import com.arohau.jpa.entity.*;
 import com.arohau.jpa.repository.EmployeeRepositoryImpl;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -27,10 +24,10 @@ public class Main_3 {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EmployeeRepositoryImpl employeeRepository = new EmployeeRepositoryImpl(entityManager);
 
-        ActiveEmployee employee = new ActiveEmployee();
-        employee.setFName("Mary");
-        employee.setLName("Johnson");
-        employee.setYearsExperience(20);
+        ActiveEmployee employee1 = new ActiveEmployee();
+        employee1.setFName("Mary");
+        employee1.setLName("Johnson");
+        employee1.setYearsExperience(20);
 
         ActiveEmployee employee2 = new ActiveEmployee();
         employee2.setFName("John");
@@ -38,19 +35,21 @@ public class Main_3 {
         employee2.setYearsExperience(5);
 
         //set employment history
-        employee.setCompanies(generateCompanies());
+        employee1.setCompanies(generateCompanies());
         employee2.setCompanies(generateCompanies());
 
         //create an EmployeeProfile and associate it to an Employee
-        employee.setProfile(new EmployeeProfile("userName", "password!", "email@email.com", employee, "Software Engineer"));
-        employee2.setProfile(new EmployeeProfile("jDoe", "password234", "johndoe@email.com", employee2, "Project Manager"));
+//        employee.setProfile(new EmployeeProfile(new EmployeeProfileCompositePrimaryKey("111", "111"),"userName", "password!", "email@email.com", "Software Engineer", employee));
+//        employee2.setProfile(new EmployeeProfile(new EmployeeProfileCompositePrimaryKey("222", "222"),"jDoe", "password234", "johndoe@email.com", "Project Manager", employee2));
+        employee1.setProfile(new EmployeeProfile("userName", "password!", "email@email.com", "Software Engineer", employee1));
+        employee2.setProfile(new EmployeeProfile("jDoe", "password234", "johndoe@email.com", "Project Manager", employee2));
 
         //set salaries
-        employee.setSalaries(generateSalaries());
+        employee1.setSalaries(generateSalaries());
         employee2.setSalaries(generateSalaries());
 
         //save Employee
-        employeeRepository.save(employee);
+        employeeRepository.save(employee1);
         employeeRepository.save(employee2);
 
         entityManager.close();

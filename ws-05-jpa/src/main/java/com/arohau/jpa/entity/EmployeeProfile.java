@@ -20,6 +20,10 @@ public class EmployeeProfile implements Serializable {
     @Column(name="employee_profile_id")
     private Long id;
 
+// composite key
+//    @EmbeddedId
+//    private EmployeeProfileCompositePrimaryKey id;
+
     @Column
     private String userName;
 
@@ -36,16 +40,11 @@ public class EmployeeProfile implements Serializable {
     @OneToOne(mappedBy="profile")
     private Employee employee;
 
-    public EmployeeProfile(Long id, String userName, String password, String email, Employee employee, String title) {
-        this(userName, password, email, employee, title);
-        this.id = id;
-    }
-
-    public EmployeeProfile(String userName, String password, String email, Employee employee, String title) {
+    public EmployeeProfile(String userName, String password, String email, String title, Employee employee) {
         this.userName = userName;
         this.password = password;
         this.email = email;
-        this.employee = employee;
         this.title = title;
+        this.employee = employee;
     }
 }

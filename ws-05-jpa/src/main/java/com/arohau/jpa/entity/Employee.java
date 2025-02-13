@@ -23,10 +23,6 @@ public class Employee implements Serializable {
     @Column(name="employee_id")
     private Long id;
 
-// composite key
-//    @EmbeddedId
-//    private EmployeePrimaryKey id;
-
     @NonNull
     @Column
     private String fName;
@@ -49,6 +45,10 @@ public class Employee implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "employee_profile_id")
+//    @JoinColumns({
+//            @JoinColumn(name="personalIdNumber"),
+//            @JoinColumn(name="phoneNumber")
+//    })
     private EmployeeProfile profile;
 
     public Employee(Long id, String fName, String lName, Integer yearsExperience, List<Company> companies) {
