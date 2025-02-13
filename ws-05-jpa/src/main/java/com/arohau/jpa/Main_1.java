@@ -29,7 +29,7 @@ public class Main_1 {
 
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        Company company = new Company("adidas", "NA");
+        Company company = new Company("adidas", "NA"); // transient state
         entityManager.persist(company);
         transaction.commit();
 
