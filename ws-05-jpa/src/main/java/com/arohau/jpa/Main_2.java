@@ -56,7 +56,7 @@ public class Main_2 {
         employee2.setYearsExperience(5);
 
         //save Employees
-        employeeRepository.save((Employee) employee1);
+        employeeRepository.save(employee1);
         employeeRepository.save(employee2);
 
         entityManager.close();

@@ -23,6 +23,10 @@ public class Employee implements Serializable {
     @Column(name="employee_id")
     private Long id;
 
+// composite key
+//    @EmbeddedId
+//    private EmployeePrimaryKey id;
+
     @NonNull
     @Column
     private String fName;

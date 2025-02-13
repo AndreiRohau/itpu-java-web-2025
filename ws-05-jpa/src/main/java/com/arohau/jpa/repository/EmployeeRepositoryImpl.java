@@ -50,7 +50,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         if (entityManager.contains(employee)) {
             entityManager.remove(employee);
         } else {
-            entityManager.merge(employee);
+            throw new RuntimeException("There is no one to delete");
         }
 
         entityManager.getTransaction().commit(); //uncomment if not using @Transactional
