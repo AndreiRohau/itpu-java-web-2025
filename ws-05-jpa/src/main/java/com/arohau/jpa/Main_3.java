@@ -5,6 +5,7 @@ import com.arohau.jpa.repository.EmployeeRepositoryImpl;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ public class Main_3 {
     public static void main(String[] args) {
         entityManagerFactory = Persistence.createEntityManagerFactory("default");
         run();
+        check("[]");
         entityManagerFactory.close();
     }
 
@@ -39,7 +41,7 @@ public class Main_3 {
         employee2.setCompanies(generateCompanies());
 
         //create an EmployeeProfile and associate it to an Employee
-//        employee.setProfile(new EmployeeProfile(new EmployeeProfileCompositePrimaryKey("111", "111"),"userName", "password!", "email@email.com", "Software Engineer", employee));
+//        employee1.setProfile(new EmployeeProfile(new EmployeeProfileCompositePrimaryKey("111", "111"),"userName", "password!", "email@email.com", "Software Engineer", employee1));
 //        employee2.setProfile(new EmployeeProfile(new EmployeeProfileCompositePrimaryKey("222", "222"),"jDoe", "password234", "johndoe@email.com", "Project Manager", employee2));
         employee1.setProfile(new EmployeeProfile("userName", "password!", "email@email.com", "Software Engineer", employee1));
         employee2.setProfile(new EmployeeProfile("jDoe", "password234", "johndoe@email.com", "Project Manager", employee2));
@@ -78,6 +80,16 @@ public class Main_3 {
         salaries.add(historicalSalary2);
 
         return salaries;
+    }
+
+    private static void check(String expected) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        Query getAllEmployeesQuery = entityManager.createNativeQuery("SELECT * FROM employees;", Employee.class);
+        List<Employee> employees = (List<Employee>) getAllEmployeesQuery.getResultList();
+        System.out.println("State: " + employees);
+        System.out.println("Expected: " + expected);
+        System.out.println();
+        entityManager.close();
     }
 
 }
