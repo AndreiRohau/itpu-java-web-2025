@@ -17,13 +17,13 @@ public class Main_4 {
     private static SessionFactory sessionFactory;
 
     public static void main(String[] args) {
-//        EntityManagerFactory entityManagerFactory = Persistence.
-//                createEntityManagerFactory("default");
+//        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
 //        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         EntityManagerFactory entityManagerFactory = sessionFactory;
         Session session = sessionFactory.openSession();
+        EntityManager entityManager = session;
 
         EmployeeRepositoryImpl employeeRepository = new EmployeeRepositoryImpl(session, session);
 

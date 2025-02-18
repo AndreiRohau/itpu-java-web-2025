@@ -1,6 +1,7 @@
 package com.arohau.jpa;
 
 import com.arohau.jpa.entity.Company;
+import com.arohau.jpa.entity.Employee;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -44,6 +45,11 @@ public class Main_1 {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         List<Company> companies = (List<Company>) entityManager.createNativeQuery("SELECT * FROM companies;", Company.class).getResultList();
+
+        Company company = entityManager.find(Company.class, 1);
+        System.out.println("employees list is not loaded from database at this point");
+        List<Employee> employees = company.getEmployees(); // hibernate sees that data is still not loaded due to fetch-type=lazy, and runs a query to a database to get all employees for this company
+
         transaction.commit();
 
 //        System.out.println("Result get one by id: " + entityManager.find(Company.class, 1));
