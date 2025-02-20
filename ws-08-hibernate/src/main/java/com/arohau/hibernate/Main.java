@@ -1,12 +1,10 @@
 package com.arohau.hibernate;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import com.arohau.hibernate.entity.Comment;
 import com.arohau.hibernate.entity.Post;
 import com.arohau.hibernate.service.SocialMediaService;
 import com.arohau.hibernate.service.SocialMediaServiceImpl;
+import jakarta.persistence.EntityManager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -69,6 +67,7 @@ public class Main {
         }
 
         System.out.println("-".repeat(100) + "\n\n" + "-".repeat(100));
+        em.clear();
     }
 
     private static void firstLevelCacheAndDetachedObjects(EntityManager em, SocialMediaService service) {
