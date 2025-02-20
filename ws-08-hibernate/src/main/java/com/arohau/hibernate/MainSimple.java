@@ -10,7 +10,7 @@ public class MainSimple {
     public static void main(String[] args) {
         // configure from properties
         Configuration configure = new Configuration().configure();
-//        configure.addAnnotatedClass(User.class);
+
         // instantiate SessionFactory
         SessionFactory sessionFactory = configure.buildSessionFactory();
         // get link to stats
@@ -43,25 +43,25 @@ public class MainSimple {
         }
 
         // flow U-1: check Session, check 2LVL, mark Hit entity from 2Lvl cache
-        session = sessionFactory.openSession();
-        session.beginTransaction();
-        User hitFrom2LvlUser1 = session.get(User.class, user1.getId());
-        session.getTransaction().commit();
-        printData(hitFrom2LvlUser1, stats, 3); // 1-1-1
+        try (Session session = sessionFactory.openSession();) {
+            session.beginTransaction();
+            User hitFrom2LvlUser1 = session.get(User.class, userId);
+            session.getTransaction().commit();
+            printData(hitFrom2LvlUser1, stats, 3); // 1-1-1
+        }
 
-        // clean up all cache
+        // clean up all caches
         sessionFactory.getCache().evictAllRegions();
 
         // flow U-1: check in session, check in 2LVL, mark missing in 2LVL, select from DB, PUT to 2LVL, PUT to SESSION
-        session = sessionFactory.openSession();
-        session.beginTransaction();
-        User fromDbUser1 = session.get(User.class, user1.getId());
-        session.getTransaction().commit();
-        printData(fromDbUser1, stats, 6); // 2-3-3
+        try (Session session = sessionFactory.openSession();) {
+            session.beginTransaction();
+            User fromDbUser1 = session.get(User.class, userId);
+            session.getTransaction().commit();
+            printData(fromDbUser1, stats, 6); // 1-2-2
+        }
 
         System.out.println("EXIT");
-
-        session.close();
         sessionFactory.close();
     }
 
