@@ -1,7 +1,6 @@
 package com.arohau.http;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.ProxySelector;
 import java.net.URI;
@@ -21,12 +20,12 @@ public class Main {
         List<HttpRequest> requests = new ArrayList<>();
 
         HttpRequest getRequest_1 = HttpRequest.newBuilder()
+                .GET()
                 .uri(new URI("https://postman-echo.com/get"))
                 .version(HttpClient.Version.HTTP_2)
                 .headers("k1", "v1", "k2", "v2")
                 .header("key3", "value3")
                 .timeout(Duration.of(10, SECONDS))
-                .GET()
                 .build();
         requests.add(getRequest_1);
 
