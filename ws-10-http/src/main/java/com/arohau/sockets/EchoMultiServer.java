@@ -64,6 +64,7 @@ public class EchoMultiServer {
                 in.close();
                 out.close();
                 clientSocket.close();
+                System.out.println("Processed");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
