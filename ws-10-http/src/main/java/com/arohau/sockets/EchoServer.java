@@ -26,7 +26,7 @@ public class EchoServer {
                 out.println("good bye");
                 break;
             }
-            out.println(inputLine);
+            out.println(inputLine.toUpperCase());
         }
     }
 

@@ -11,14 +11,14 @@ public class GreetServer {
 
     private ServerSocket serverSocket;
     private Socket clientSocket;
-    private PrintWriter out;
     private BufferedReader in;
+    private PrintWriter out;
 
     public void start(int port) throws IOException {
         serverSocket = new ServerSocket(port);
         clientSocket = serverSocket.accept();
-        out = new PrintWriter(clientSocket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        out = new PrintWriter(clientSocket.getOutputStream(), true);
         String greeting = in.readLine();
         if ("hello server".equals(greeting)) {
             out.println("hello client");
