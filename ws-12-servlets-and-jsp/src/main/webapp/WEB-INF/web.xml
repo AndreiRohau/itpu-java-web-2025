@@ -5,7 +5,7 @@
 <web-app>
     <servlet>
         <servlet-name>frontServlet</servlet-name>
-        <servlet-class>com.arohau.FrontController</servlet-class>
+        <servlet-class>com.arohau.controller.FrontController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>frontServlet</servlet-name>
