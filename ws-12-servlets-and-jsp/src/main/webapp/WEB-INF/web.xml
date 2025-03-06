@@ -9,6 +9,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>frontServlet</servlet-name>
-        <url-pattern>/FrontController</url-pattern>
+        <url-pattern>/fc</url-pattern>
     </servlet-mapping>
 </web-app>

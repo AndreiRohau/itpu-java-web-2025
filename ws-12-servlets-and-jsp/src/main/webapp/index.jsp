@@ -2,6 +2,11 @@
 pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ page import="java.time.LocalDateTime"%>
 
+<%!
+public void printerTmp(String s) {
+    System.out.println("printerTmp: " + s);
+}
+%>
 
 <html>
 
@@ -12,6 +17,7 @@ pageEncoding="UTF-8" isELIgnored="false"%>
 <%
 final LocalDateTime now = LocalDateTime.now();
 out.println(now);
+printerTmp(now.toString());
 %>
 <br/>
 
@@ -25,8 +31,8 @@ out.println(now);
 <br/>
 
 <p>GET</p>
-<form method="get" action="FrontController">
-
+<form method="get" action="fc">
+<!--operation=sum&command=sum&number-1=0&number-2=0&SubmitButtonType=sum-->
     <p>Please select your operation:</p>
     <input type="radio" checked="checked" id="sum" name="operation" value="sum">
     <label for="sum">SUM</label><br>
@@ -40,7 +46,7 @@ out.println(now);
 <br/>
 
 <p>POST</p>
-<form method="post" action="FrontController">
+<form method="post" action="fc">
     <input type="hidden" name="command" value="postInputParameter"/>
     <input type="text" name="message" value="..default value.."/>
     <button type="submit">Submit</button>

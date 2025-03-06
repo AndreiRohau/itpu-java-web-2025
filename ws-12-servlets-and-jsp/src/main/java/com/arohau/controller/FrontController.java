@@ -5,6 +5,7 @@ import com.arohau.old.service.Calculator;
 import com.arohau.old.service.calculatorImpl.Subtract;
 import com.arohau.old.service.calculatorImpl.Sum;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,8 +32,7 @@ public class FrontController extends HttpServlet {
         commands.put(SUM, new Sum());
         commands.put(SUBTRACT, new Subtract());
     }
-
-
+//    operation=sum&command=sum&number-1=0&number-2=0&SubmitButtonType=sum
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
@@ -41,12 +41,9 @@ public class FrontController extends HttpServlet {
             Calculator calculator = commands.get(operation);
             calculator.calculate(req, resp);
 
-            req.getRequestDispatcher("index.jsp").forward(req, resp);
-        } catch (MyCustomException e) {
-            e.printStackTrace();
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp");
+            requestDispatcher.forward(req, resp);
+        } catch (MyCustomException | ServletException | IOException e) {
             e.printStackTrace();
         }
     }
