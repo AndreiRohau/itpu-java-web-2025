@@ -1,7 +1,6 @@
 package com.arohau.service;
 
 import com.arohau.exception.MyCustomException;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 

@@ -20,15 +20,37 @@ out.println(now);
 printerTmp(now.toString());
 %>
 <br/>
-
-<!-- Talk about scopes in next workshop -->
-<p>Message from server: ${requestScope.result}</p>
-
-<p>Message from server: <%=request.getAttribute("result")%></p>
-
-<p>Message from server: <%=(request.getAttribute("result") == null) ? "" : request.getAttribute("result")%></p>
-
+<p>Message from server: ${requestScope.msg}</p>
 <br/>
+<p>Message from server: ${requestScope.result}</p>
+<br/>
+<p>From session: ${sessionScope.loggedUser}</p>
+
+<!--
+<p>Message from server: <%=request.getAttribute("result")%></p>
+<p>Message from server: <%=(request.getAttribute("result") == null) ? "" : request.getAttribute("result")%></p>
+-->
+<br/>
+
+
+<p>POST | register new user</p>
+<form method="post" action="fc">
+    <input type="hidden" name="command" value="reg"/>
+    <input type="text" name="login" value="log123"/>
+    <input type="text" name="password" value="psw123"/>
+    <input type="text" name="email" value="email123@email.com"/>
+    <button type="submit">Submit</button>
+</form>
+
+<p>POST | login</p>
+<form method="post" action="fc">
+    <input type="hidden" name="command" value="log"/>
+    <input type="text" name="login" value="log123"/>
+    <input type="text" name="password" value="psw123"/>
+    <button type="submit">Submit</button>
+</form>
+
+<hr/>
 
 <p>GET</p>
 <form method="get" action="fc">
@@ -45,7 +67,7 @@ printerTmp(now.toString());
 </form>
 <br/>
 
-<p>POST</p>
+<p>POST some data</p>
 <form method="post" action="fc">
     <input type="hidden" name="command" value="postInputParameter"/>
     <input type="text" name="message" value="..default value.."/>
