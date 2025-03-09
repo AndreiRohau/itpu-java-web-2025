@@ -1,6 +1,6 @@
-package com.arohau.old.service.commandImpl;
+package com.arohau.service.commandImpl;
 
-import com.arohau.old.service.Command;
+import com.arohau.service.Command;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

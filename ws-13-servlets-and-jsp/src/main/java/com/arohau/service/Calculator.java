@@ -1,4 +1,4 @@
-package com.arohau.old.service;
+package com.arohau.service;
 
 import com.arohau.exception.MyCustomException;
 

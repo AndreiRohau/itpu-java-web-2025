@@ -1,9 +1,9 @@
 package com.arohau.controller;
 
 import com.arohau.exception.MyCustomException;
-import com.arohau.old.service.Calculator;
-import com.arohau.old.service.calculatorImpl.Subtract;
-import com.arohau.old.service.calculatorImpl.Sum;
+import com.arohau.service.Calculator;
+import com.arohau.service.calculatorImpl.Subtract;
+import com.arohau.service.calculatorImpl.Sum;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
