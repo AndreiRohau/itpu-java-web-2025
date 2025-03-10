@@ -6,6 +6,14 @@
     <servlet>
         <servlet-name>frontServlet</servlet-name>
         <servlet-class>com.arohau.controller.FrontController</servlet-class>
+        <init-param>
+            <param-name>p1</param-name>
+            <param-value>test1a test1b</param-value>
+        </init-param>
+        <init-param>
+            <param-name>p2</param-name>
+            <param-value>test2a</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>frontServlet</servlet-name>

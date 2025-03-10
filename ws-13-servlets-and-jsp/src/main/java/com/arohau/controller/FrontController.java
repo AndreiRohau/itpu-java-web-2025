@@ -9,6 +9,7 @@ import com.arohau.service.calculatorImpl.Sum;
 import com.arohau.service.commandImpl.Logination;
 import com.arohau.service.commandImpl.Registration;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
@@ -39,7 +40,8 @@ public class FrontController extends HttpServlet {
     public Map<String, Command> commands = new HashMap<>();
 
     @Override
-    public void init() {
+    public void init(ServletConfig config) throws ServletException {
+        System.out.println("config: " + config);
         operations.put(SUM, new Sum());
         operations.put(SUBTRACT, new Subtract());
 

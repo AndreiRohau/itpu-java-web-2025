@@ -15,8 +15,8 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 public class AuthorizationFilter implements Filter {
-	private static final String COMMAND_PARAMETER_NAME = "command";
-	private static final String USER_ROLE_ATTRIBUTE_NAME = "role";
+	private static final String COMMAND = "command";
+	private static final String ROLE = "role";
 	private static final String LOGIN_COMMAND = "login";
 	private static final String LOGOUT_COMMAND = "logout";
 
@@ -39,54 +39,28 @@ public class AuthorizationFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-
 		// optional design with isAllowedProceeding
 		boolean isAllowedProceeding = true;
 
-		// TODO: Add your code here.
-		String command = httpServletRequest.getParameter(COMMAND_PARAMETER_NAME);
-		HttpSession session = httpServletRequest.getSession();
-		String userRole = isNull(session) ? null : (String) session.getAttribute(USER_ROLE_ATTRIBUTE_NAME);
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse res = (HttpServletResponse) response;
+		if (req.getServletPath().equalsIgnoreCase("/commandHandler") ||
+				req.getParameter(COMMAND).matches("logout") ||
+				req.getParameter(COMMAND).matches("log") ||
+				req.getParameter(COMMAND).matches("reg") ||
+				req.getParameter(COMMAND).matches("changeLanguage") ||
+				req.getParameter(COMMAND).matches("goToPage") ||
+				req.getSession().getAttribute(ROLE) != null) {
 
-		if (isAnonymousOrGuest(session, userRole)
-				&& LOGIN_COMMAND.equalsIgnoreCase(command)) {
-			proceed(request, response, chain);
-			isAllowedProceeding = true;
-
-		} else if (hasRoleAndCommand(userRole, command)) {
-			if (LOGOUT_COMMAND.equalsIgnoreCase(command)) {
-				proceed(request, response, chain);
-				isAllowedProceeding = true;
-
-			} else if (isCommandAllowedForRole(command, userRole)) {
-				proceed(request, response, chain);
-				isAllowedProceeding = true;
-			}
-		}
-
-		if (isAllowedProceeding) {
-			proceed(request, response, chain);
+			chain.doFilter(request, response);
+		}if (hasSomeCondition()) {
+			res.sendError(403);
 		} else {
-			httpServletResponse.sendError(403);
+			res.sendRedirect("index.jsp");
 		}
 	}
 
-	private void proceed(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		chain.doFilter(request, response);
-	}
-
-	private boolean hasRoleAndCommand(String userRole, String command) {
-		return nonNull(userRole) && nonNull(command);
-	}
-
-	private boolean isAnonymousOrGuest(HttpSession session, String userRole) {
-		return isNull(session) || isNull(userRole);
-	}
-
-	private boolean isCommandAllowedForRole(String command, String userRole) {
-		return nonNull(roleCommands.get(userRole))
-				&& roleCommands.get(userRole).contains(command);
+	private static boolean hasSomeCondition() {
+		return false;
 	}
 }

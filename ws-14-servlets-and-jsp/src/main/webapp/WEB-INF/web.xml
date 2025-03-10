@@ -12,6 +12,12 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
+	<listener>
+		<listener-class>
+			com.arohau.Listener
+		</listener-class>
+	</listener>
+
 	<servlet>
 		<description></description>
 		<display-name>CommandHandler</display-name>
@@ -41,4 +47,9 @@
 		<filter-name>AuthorizationFilter</filter-name>
 		<url-pattern>/commandHandler</url-pattern>
 	</filter-mapping>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/errors/error.jsp</location>
+	</error-page>
 </web-app>
