@@ -13,6 +13,8 @@ public void printerTmp(String s) {
 <%@include file="WEB-INF/page_header.jsp"%>
 <body>
 <h2>Hello World! tralala</h2>
+<p>${sessionScope.greeting}</p>
+<br/>
 
 <%
 final LocalDateTime now = LocalDateTime.now();

@@ -5,7 +5,6 @@ import com.arohau.repository.Repository;
 import com.arohau.repository.impl.UserRepositoryImpl;
 import com.arohau.service.Command;
 
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -28,6 +27,7 @@ public class Logination implements Command {
         if (found != null) {
             HttpSession session = req.getSession();
             session.setAttribute("loggedUser", found);
+            session.setAttribute("greeting", "Hello dear [" + found.getLogin() + "]");
             req.setAttribute("msg", "User is logged in [" + found + "]");
             resp.sendRedirect(req.getContextPath());
         } else {
