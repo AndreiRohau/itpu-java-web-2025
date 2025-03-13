@@ -10,6 +10,7 @@ import com.arohau.service.commandImpl.PostInputParameter;
 import com.arohau.service.commandImpl.Registration;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
+//import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,6 +20,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Logger;
 
+// you can use annotation instead of web.xml
+//@WebServlet("/fc")
 public class FrontController extends HttpServlet {
     public static final Logger LOGGER = Logger.getLogger(FrontController.class.getName());
     public static final String
