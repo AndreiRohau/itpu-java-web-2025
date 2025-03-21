@@ -11,14 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
-
 public class AuthorizationFilter implements Filter {
 	private static final String COMMAND = "command";
 	private static final String ROLE = "role";
-	private static final String LOGIN_COMMAND = "login";
-	private static final String LOGOUT_COMMAND = "logout";
 
 	Map<String, Set<String>> roleCommands;
 
@@ -26,7 +21,6 @@ public class AuthorizationFilter implements Filter {
 	public void init(FilterConfig config) throws ServletException {
 		roleCommands = new HashMap<>();
 
-		// TODO: Add your code here.
 		Enumeration<String> initParameterNames = config.getInitParameterNames();
 		while (initParameterNames.hasMoreElements()) {
 			String initParameterName = initParameterNames.nextElement();
@@ -39,21 +33,28 @@ public class AuthorizationFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		// optional design with isAllowedProceeding
-		boolean isAllowedProceeding = true;
-
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
+
+		// we can check if the session exists, and what attributes it contains...
+		HttpSession currentSession = req.getSession(false);
+		String roleName = null;
+		if (currentSession != null) {
+			roleName = (String) currentSession.getAttribute(ROLE);
+		}
+		final String commandName = req.getParameter(COMMAND);
+		final Set<String> availableRoleCommands = roleCommands.get(roleName);
+
 		if (req.getServletPath().equalsIgnoreCase("/commandHandler") ||
-				req.getParameter(COMMAND).matches("logout") ||
-				req.getParameter(COMMAND).matches("log") ||
-				req.getParameter(COMMAND).matches("reg") ||
-				req.getParameter(COMMAND).matches("changeLanguage") ||
-				req.getParameter(COMMAND).matches("goToPage") ||
-				req.getSession().getAttribute(ROLE) != null) {
+				commandName.matches("logout") ||
+				commandName.matches("log") ||
+				commandName.matches("reg") ||
+				commandName.matches("changeLanguage") ||
+				commandName.matches("goToPage") ||
+				(availableRoleCommands != null && availableRoleCommands.contains(commandName))) {
 
 			chain.doFilter(request, response);
-		}if (hasSomeCondition()) {
+		} else if (hasSomeCondition()) {
 			res.sendError(403);
 		} else {
 			res.sendRedirect("index.jsp");
