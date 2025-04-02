@@ -2,7 +2,7 @@ package com.arohau.old;
 
 import com.arohau.old.domain.User;
 import com.arohau.old.service.UserService;
-import com.arohau.old.service.impl.UserServiceImpl;
+import com.arohau.old.service.UserServiceImpl;
 
 import java.util.List;
 
