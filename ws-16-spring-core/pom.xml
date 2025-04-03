@@ -28,7 +28,7 @@
             <version>${spring.version}</version>
         </dependency>
 
-        <!-- Used in SomeBean.class for PostConstruct and PreDestroy annotations -->
+        <!-- Used in DetectorBean.class for PostConstruct and PreDestroy annotations -->
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>

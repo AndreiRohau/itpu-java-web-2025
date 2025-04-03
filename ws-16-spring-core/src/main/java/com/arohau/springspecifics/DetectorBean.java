@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationContextAware;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-public class DetectorBean  implements InitializingBean, DisposableBean, ApplicationContextAware, BeanFactoryAware, BeanNameAware {
+public class DetectorBean implements InitializingBean, DisposableBean, ApplicationContextAware, BeanFactoryAware, BeanNameAware {
 
     @Value("${my.custom.prop.1}")
     private String propVal1;
