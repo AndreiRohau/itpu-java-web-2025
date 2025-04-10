@@ -35,13 +35,12 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate);
 
 		return "home";
-//		return "/WEB-INF/views/home.jsp";
 	}
 
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public String user(@Validated User user, Model model) {
 		System.out.println("User Page Requested");
 		model.addAttribute("userName", user.getUserName());
-		return "/WEB-INF/views/user.jsp";
+		return "user";
 	}
 }
