@@ -17,12 +17,12 @@ public class AppConfig implements WebMvcConfigurer {
 
     @Bean
     public ITemplateResolver templateResolver() {
-        ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
-        resolver.setPrefix("templates/"); // Template location
-        resolver.setSuffix(".html"); // File extension
-        resolver.setTemplateMode("HTML5");
-        resolver.setCharacterEncoding("UTF-8");
-        return resolver;
+        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+        templateResolver.setPrefix("templates/"); // Template location
+        templateResolver.setSuffix(".html"); // File extension
+        templateResolver.setTemplateMode("HTML5");
+        templateResolver.setCharacterEncoding("UTF-8");
+        return templateResolver;
     }
 
     @Bean
@@ -35,9 +35,9 @@ public class AppConfig implements WebMvcConfigurer {
 
     @Bean
     public ThymeleafViewResolver viewResolver(SpringTemplateEngine templateEngine) {
-        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-        resolver.setTemplateEngine(templateEngine);
-        resolver.setCharacterEncoding("UTF-8");
-        return resolver;
+        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+        viewResolver.setTemplateEngine(templateEngine);
+        viewResolver.setCharacterEncoding("UTF-8");
+        return viewResolver;
     }
 }
