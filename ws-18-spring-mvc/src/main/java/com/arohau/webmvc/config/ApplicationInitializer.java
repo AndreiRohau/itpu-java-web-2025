@@ -14,10 +14,11 @@ public class ApplicationInitializer implements WebApplicationInitializer {
         context.register(AppConfig.class);
 
         ServletRegistration.Dynamic dispatcher = servletContext
-                .addServlet("DispatcherServlet", new DispatcherServlet(context));
+                .addServlet("FrontController", new DispatcherServlet(context));
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
 
         System.out.println("http://localhost:8080/ws-18/home");
+        System.out.println("http://localhost:8080/ws-18/register");
     }
 }
