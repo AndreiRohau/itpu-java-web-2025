@@ -8,6 +8,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -15,13 +16,13 @@ import java.util.Locale;
 
 @Controller
 public class HomeController {
-//
-//	@ModelAttribute("user")
-//	public User userModel(){
-//		return new User();
-//	}
 
-	@GetMapping("/")
+	@ModelAttribute("user")
+	public User userModel(){
+		return new User();
+	}
+
+	@GetMapping
 	public String home(Locale locale, Model model) {
 		System.out.println("HomeController GET /");
 
@@ -34,9 +35,10 @@ public class HomeController {
 	}
 
 	@GetMapping("/home")
-	public String home(Model model) {
+	public String home(@RequestParam(required = false, name = "serverMessage") String serverMessage, Model model) {
 		System.out.println("HomeController GET /home");
-		model.addAttribute("username", "John Doe");
+		model.addAttribute("serverMessage", serverMessage);
+		model.addAttribute("user", model.getAttribute("user"));
 		return "home";
 	}
 }

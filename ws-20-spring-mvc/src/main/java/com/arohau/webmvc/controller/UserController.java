@@ -19,6 +19,15 @@ public class UserController {
         return new User();
     }
 
+    @GetMapping
+    public String user(@RequestParam(name = "userId") String userId, Model model) {
+        System.out.println("UserController GET /");
+        System.out.println("userId = " + userId);
+        System.out.println("model = " + model);
+        System.out.println("... gettting user by user id");
+        return "user";
+    }
+
     @GetMapping("/registration")
     public String registration(Model model) {
         System.out.println("UserController GET /registration");
@@ -41,17 +50,8 @@ public class UserController {
         System.out.println(bindingResult);
         System.out.println(model);
         System.out.println("...saving user...");
-        model.addAttribute("serverMessage", "New User, with name" + user.getName() + " saved successfully");
-        return "home";
-    }
-
-    @GetMapping("/")
-    public String user(@RequestParam(name = "userId") String userId, Model model) {
-        System.out.println("UserController GET /");
-        System.out.println("userId = " + userId);
-        System.out.println("model = " + model);
-        System.out.println("... gettting user by user id");
-        return "user";
+        model.addAttribute("serverMessage", "New User, " + user.getName() + " saved successfully");
+        return "redirect:/home?" + "serverMessage=" + "New User, " + user.getName() + " saved successfully";
     }
 
 //    @GetMapping("/")
