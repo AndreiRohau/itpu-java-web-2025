@@ -23,7 +23,7 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home(Locale locale, Model model) {
-		System.out.println("HomeController /");
+		System.out.println("HomeController GET /");
 
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -35,6 +35,7 @@ public class HomeController {
 
 	@GetMapping("/home")
 	public String home(Model model) {
+		System.out.println("HomeController GET /home");
 		model.addAttribute("username", "John Doe");
 		return "home";
 	}
