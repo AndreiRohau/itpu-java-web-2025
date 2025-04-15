@@ -15,11 +15,11 @@ import java.util.Locale;
 
 @Controller
 public class HomeController {
-
-	@ModelAttribute("user")
-	public User userModel(){
-		return new User();
-	}
+//
+//	@ModelAttribute("user")
+//	public User userModel(){
+//		return new User();
+//	}
 
 	@GetMapping("/")
 	public String home(Locale locale, Model model) {
@@ -33,33 +33,9 @@ public class HomeController {
 		return "home";
 	}
 
-	@GetMapping("/registration")
-	public String register(Model model) {
-		System.out.println("HomeController /registration");
-		System.out.println(model);
-		return "registration";
-	}
-
 	@GetMapping("/home")
 	public String home(Model model) {
 		model.addAttribute("username", "John Doe");
 		return "home";
-	}
-
-	@GetMapping("/user")
-	public String user(@Validated User user, Model model) {
-		System.out.println("User Page Requested");
-		model.addAttribute("userName", user.getName());
-		return "user";
-	}
-
-	@PostMapping("/register")
-	public String register(@Validated @ModelAttribute("user") User user,
-						   BindingResult bindingResult, Model model) {
-		System.out.println("call register");
-		System.out.println(user);
-		System.out.println(bindingResult);
-		System.out.println(model);
-		return "registration";
 	}
 }
