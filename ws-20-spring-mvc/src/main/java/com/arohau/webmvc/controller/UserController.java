@@ -1,6 +1,8 @@
 package com.arohau.webmvc.controller;
 
 import com.arohau.webmvc.model.User;
+import com.arohau.webmvc.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,17 +16,30 @@ import static java.util.Objects.nonNull;
 @RequestMapping("/user")
 public class UserController {
 
+    @Autowired
+    private UserService userService;
+
     @ModelAttribute("user")
     public User userModel(){
         return new User();
     }
 
+//    @GetMapping
+//    public String getUserById(@RequestParam(name = "userId") Long userId, Model model) {
+//        System.out.println("UserController GET /");
+//        System.out.println("userId = " + userId);
+//        System.out.println("model = " + model);
+//        System.out.println("... gettting user by user id");
+//        return "user";
+//    }
+
     @GetMapping
-    public String user(@RequestParam(name = "userId") String userId, Model model) {
+    public String getUserByLogin(@RequestParam(name = "userLogin") String login, Model model) {
         System.out.println("UserController GET /");
-        System.out.println("userId = " + userId);
+        System.out.println("login = " + login);
         System.out.println("model = " + model);
-        System.out.println("... gettting user by user id");
+        com.arohau.webmvc.entity.User userByLogin = userService.getUserByLogin(login);
+        model.addAttribute("user", userByLogin);
         return "user";
     }
 
@@ -49,9 +64,9 @@ public class UserController {
         System.out.println(user);
         System.out.println(bindingResult);
         System.out.println(model);
-        System.out.println("...saving user...");
-        model.addAttribute("serverMessage", "New User, " + user.getName() + " saved successfully");
-        return "redirect:/home?" + "serverMessage=" + "New User, " + user.getName() + " saved successfully";
+        com.arohau.webmvc.entity.User savedUser = userService.saveUser(user);
+        model.addAttribute("serverMessage", "New User, " + savedUser.getName() + " saved successfully");
+        return "redirect:/home?" + "serverMessage=" + "New User, " + savedUser.getName() + " saved successfully";
     }
 
 //    @GetMapping("/")
