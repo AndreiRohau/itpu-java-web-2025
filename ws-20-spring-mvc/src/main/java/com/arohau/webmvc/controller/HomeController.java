@@ -44,17 +44,15 @@ public class HomeController {
 		throwArithmeticException();
 		return "home";
 	}
+	private static void throwArithmeticException() {
+		throw new ArithmeticException("My ArithmeticException");
+	}
 
 	@GetMapping("/npe")
 	public String generateNullPointerException(Model model) {
 		throwNullPointerException();
 		return "home";
 	}
-
-	private static void throwArithmeticException() {
-		throw new ArithmeticException("My ArithmeticException");
-	}
-
 	private static void throwNullPointerException() {
 		throw new NullPointerException("My NullPointerException");
 	}
