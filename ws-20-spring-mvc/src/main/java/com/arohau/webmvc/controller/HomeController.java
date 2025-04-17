@@ -5,10 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -40,5 +37,32 @@ public class HomeController {
 		model.addAttribute("serverMessage", serverMessage);
 		model.addAttribute("user", model.getAttribute("user"));
 		return "home";
+	}
+
+	@GetMapping("/ae")
+	public String generateArithmeticException(Model model) {
+		throwArithmeticException();
+		return "home";
+	}
+
+	@GetMapping("/npe")
+	public String generateNullPointerException(Model model) {
+		throwNullPointerException();
+		return "home";
+	}
+
+	private static void throwArithmeticException() {
+		throw new ArithmeticException("My ArithmeticException");
+	}
+
+	private static void throwNullPointerException() {
+		throw new NullPointerException("My NullPointerException");
+	}
+
+	@ExceptionHandler(ArithmeticException.class)
+	public String handleArithmeticException(Model model) {
+		System.out.println("ArithmeticException handled");
+		model.addAttribute("msg", "ArithmeticException");
+		return "error";
 	}
 }
