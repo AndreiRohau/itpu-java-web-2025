@@ -15,7 +15,7 @@ public class LoggingAspect {
 
     @Pointcut("@annotation(Log)")
     public void logPointcut() {
-        LOGGER.warning("logPointcut");
+        LOGGER.warning("logPointcut - never runs");
     }
 
     @Before("logPointcut()")
