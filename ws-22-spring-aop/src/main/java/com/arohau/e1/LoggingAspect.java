@@ -15,7 +15,6 @@ public class LoggingAspect {
 
     @Pointcut("@annotation(Log)")
     public void logPointcut() {
-
     }
 
     @Before("logPointcut()")

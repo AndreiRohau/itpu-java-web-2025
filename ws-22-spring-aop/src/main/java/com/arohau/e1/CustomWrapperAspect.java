@@ -32,7 +32,7 @@ public class CustomWrapperAspect {
         replaceReturnValue.setLogin("replaced_login");
         replaceReturnValue.setPassword("replaced_password");
 
-        System.out.println("9 - CustomWrapperAspect#aroundAdvice() - END");
+        System.out.println("11 - CustomWrapperAspect#aroundAdvice() - END");
         return replaceReturnValue;
     }
 
@@ -53,14 +53,14 @@ public class CustomWrapperAspect {
 
         System.out.println("3 - CustomWrapperAspect#aroundAdvice() - BEFORE PROCEED");
         Object returnValue = pjp.proceed(args);
-        System.out.println("10 - CustomWrapperAspect#aroundAdvice() - AFTER PROCEED");
+        System.out.println("12 - CustomWrapperAspect#aroundAdvice() - AFTER PROCEED");
 
-        System.out.println("11 - returnValue is = " + returnValue);
+        System.out.println("13 - returnValue is = " + returnValue);
         UserDto replaceReturnValue = new UserDto();
         replaceReturnValue.setLogin("replaced_login_twice");
         replaceReturnValue.setPassword("replaced_password_twice");
 
-        System.out.println("12 - CustomWrapperAspect#aroundAdvice() - END");
+        System.out.println("14 - CustomWrapperAspect#aroundAdvice() - END");
         return replaceReturnValue;
     }
 }

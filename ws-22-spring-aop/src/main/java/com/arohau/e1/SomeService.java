@@ -20,7 +20,7 @@ public class SomeService {
 
     @Log
     public int textLength(String text) {
-        System.out.println("SomeService#textLength()");
+//        System.out.println("SomeService#textLength()");
         LOGGER.warning("SomeService#textLength()");
         return text.length();
     }
