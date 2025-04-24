@@ -10,18 +10,18 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class CustomWrapperAspect {
 
-    @Pointcut("@annotation(CustomWrapper) && args(userDto)")
-    public void customWrapper(UserDto userDto) {
+    @Pointcut("@annotation(CustomWrapper) && args(u)")
+    public void customWrapper(UserDto u) {
     }
 
-    @Around("customWrapper(userDto)")
-    public Object aroundAdvice(ProceedingJoinPoint pjp, UserDto userDto) throws Throwable {
+    @Around("customWrapper(uDto)")
+    public Object aroundAdvice(ProceedingJoinPoint pjp, UserDto uDto) throws Throwable {
         System.out.println("4 - CustomWrapperAspect#aroundAdvice() - BEGIN");
 
-        System.out.println("5 - Caught method parameter = " + userDto);
+        System.out.println("5 - Caught method parameter = " + uDto);
 
-        userDto.setLogin(userDto.getLogin() + "_twice");
-        userDto.setPassword(userDto.getPassword() + "_twice");
+        uDto.setLogin(uDto.getLogin() + "_twice");
+        uDto.setPassword(uDto.getPassword() + "_twice");
 
         System.out.println("6 - CustomWrapperAspect#aroundAdvice() - BEFORE PROCEED");
         Object returnValue = pjp.proceed();
