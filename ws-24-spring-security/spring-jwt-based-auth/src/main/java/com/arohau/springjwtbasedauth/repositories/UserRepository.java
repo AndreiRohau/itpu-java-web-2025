@@ -9,7 +9,7 @@ import java.util.Map;
 public class UserRepository {
     private static final Map<String, User> usersMap = Map.of(
             "nd@m", new User("nd@m", "1234", "andrei", "horner"),
-            "rona@m", new User("roma@m", "4321", "roma", "horner")
+            "roma@m", new User("roma@m", "4321", "roma", "horner")
     );
 
     public User findUserByEmail(String email){
