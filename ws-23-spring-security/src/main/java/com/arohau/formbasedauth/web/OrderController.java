@@ -1,17 +1,17 @@
-package com.frankmoley.lil.adminweb.web;
+package com.arohau.formbasedauth.web;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import com.frankmoley.lil.adminweb.data.model.Customer;
-import com.frankmoley.lil.adminweb.data.model.Order;
-import com.frankmoley.lil.adminweb.data.repository.CustomerRepository;
-import com.frankmoley.lil.adminweb.data.repository.OrderRepository;
+import com.arohau.formbasedauth.data.model.Customer;
+import com.arohau.formbasedauth.data.model.Order;
+import com.arohau.formbasedauth.data.repository.CustomerRepository;
+import com.arohau.formbasedauth.data.repository.OrderRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/orders")

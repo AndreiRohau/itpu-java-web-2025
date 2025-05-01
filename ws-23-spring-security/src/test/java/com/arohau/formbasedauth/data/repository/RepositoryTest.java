@@ -1,11 +1,14 @@
-package com.frankmoley.lil.adminweb.data.repository;
+package com.arohau.formbasedauth.data.repository;
 
-import com.frankmoley.lil.adminweb.data.model.Customer;
-import com.frankmoley.lil.adminweb.data.model.Order;
-import org.apache.commons.collections4.IterableUtils;
+import com.arohau.formbasedauth.data.model.Customer;
+import com.arohau.formbasedauth.data.model.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class RepositoryTest {
@@ -17,13 +20,13 @@ public class RepositoryTest {
 
     @Test
     public void testGetAllOrders(){
-        Iterable<Order> orders = orderRepository.findAll();
-        assert(IterableUtils.size(orders)==3);
+        List<Order> orders = orderRepository.findAll();
+        assertEquals(3, orders.size());
     }
 
     @Test
     public void testGetAllCustomers(){
-        Iterable<Customer> customers = customerRepository.findAll();
-        assert(IterableUtils.size(customers)==7);
+        List<Customer> customers = customerRepository.findAll();
+        assertEquals(7, customers.size());
     }
 }

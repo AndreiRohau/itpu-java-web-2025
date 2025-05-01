@@ -1,4 +1,4 @@
-package com.frankmoley.lil.adminweb;
+package com.arohau.formbasedauth;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

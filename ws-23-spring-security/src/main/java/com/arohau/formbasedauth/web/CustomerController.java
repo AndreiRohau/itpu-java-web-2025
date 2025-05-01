@@ -1,15 +1,10 @@
-package com.frankmoley.lil.adminweb.web;
+package com.arohau.formbasedauth.web;
 
-import java.security.Principal;
-import java.util.*;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import com.frankmoley.lil.adminweb.data.model.Customer;
-import com.frankmoley.lil.adminweb.data.model.Order;
-import com.frankmoley.lil.adminweb.data.repository.CustomerRepository;
-import com.frankmoley.lil.adminweb.data.repository.OrderRepository;
+import com.arohau.formbasedauth.data.model.Customer;
+import com.arohau.formbasedauth.data.model.Order;
+import com.arohau.formbasedauth.data.repository.CustomerRepository;
+import com.arohau.formbasedauth.data.repository.OrderRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +14,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/customers")
