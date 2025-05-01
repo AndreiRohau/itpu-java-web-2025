@@ -24,6 +24,10 @@ public class WebSecurityConfigV2 {
                         .requestMatchers("/orders").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
+                .anonymous(anon -> anon
+                        .principal("guest-user") // Custom principal for anonymous users
+                        .authorities("ROLE_ANONYMOUS") // Anonymous users get ROLE_ANONYMOUS authority)
+                )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .failureUrl("/login?error")
