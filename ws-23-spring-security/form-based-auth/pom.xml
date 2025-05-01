@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.arohau</groupId>
-    <artifactId>ws-23-spring-security</artifactId>
+    <artifactId>form-based-auth</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <name>form-based-auth</name>
