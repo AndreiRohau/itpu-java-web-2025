@@ -18,34 +18,34 @@ public class EmployeeController {
     // Aggregate root
     // tag::get-aggregate-root[]
     @GetMapping
-    List<Employee> all() {
+    public List<Employee> all() {
         return employeeService.getAll();
     }
     // end::get-aggregate-root[]
 
     // Single item
     @GetMapping("/{id}")
-    Employee one(@PathVariable Long id) throws EmployeeNotFoundException {
+    public Employee one(@PathVariable Long id) throws EmployeeNotFoundException {
         return employeeService.getById(id);
     }
 
     @PostMapping
-    Employee newEmployee(@RequestBody Employee newEmployee) {
+    public Employee newEmployee(@RequestBody Employee newEmployee) {
         return employeeService.saveNewEmployee(newEmployee);
     }
 
     @PutMapping("/{id}")
-    Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
+    public Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) throws EmployeeNotFoundException {
         return employeeService.updateById(id, newEmployee);
     }
 
     @DeleteMapping("/{id}")
-    void deleteEmployee(@PathVariable Long id) {
+    public void deleteEmployee(@PathVariable Long id) {
         employeeService.deleteById(id);
     }
 
     @DeleteMapping("/name/{name}")
-    void deleteEmployee(@PathVariable String name) {
+    public void deleteEmployee(@PathVariable String name) {
         employeeService.deleteByName(name);
     }
 }

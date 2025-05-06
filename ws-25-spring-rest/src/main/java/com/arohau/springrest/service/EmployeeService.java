@@ -9,8 +9,7 @@ public interface EmployeeService {
     List<Employee> getAll();
     Employee getById(Long id) throws EmployeeNotFoundException;
     Employee saveNewEmployee(Employee newEmployee);
-    Employee updateById(Long id, Employee newEmployee);
+    Employee updateById(Long id, Employee newEmployee) throws EmployeeNotFoundException;
     void deleteById(Long id);
     void deleteByName(String name);
-
 }

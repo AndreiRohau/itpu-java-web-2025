@@ -32,18 +32,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee updateById(Long id, Employee newEmployee) {
+    public Employee updateById(final Long id, Employee newEmployee) throws EmployeeNotFoundException {
         return employeeRepository.findById(id)
                 .map(employee -> {
                     employee.setName(newEmployee.getName());
                     employee.setRole(newEmployee.getRole());
                     return employeeRepository.save(employee);
                 })
-                .orElseGet(() -> {
-//                    newEmployee.setId(id);
-                    newEmployee.setId(null);
-                    return employeeRepository.save(newEmployee);
-                });
+                .orElseThrow(() -> new EmployeeNotFoundException(id));
     }
 
     @Override
