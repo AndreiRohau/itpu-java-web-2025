@@ -10,6 +10,8 @@
 
 ___
 
+NOT an IDEMPOTENT implementation - good practice
+
 POST
 
 http://localhost:8080/employees
@@ -20,6 +22,8 @@ http://localhost:8080/employees
 }
 
 ---
+
+An IDEMPOTENT implementation - good practice
 
 PUT
 
@@ -33,7 +37,7 @@ http://localhost:8080/employees/3
 
 ---
 
-NOT an IDEMPOTENT implementation - bad practice
+An IDEMPOTENT implementation - good practice
 
 PUT
 
