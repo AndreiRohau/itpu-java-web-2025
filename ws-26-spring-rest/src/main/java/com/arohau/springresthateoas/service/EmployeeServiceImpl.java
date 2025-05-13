@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
     
     @Autowired
@@ -57,7 +58,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.deleteById(id);
     }
 
-    @Transactional
     @Override
     public void deleteByFirstName(String firstName) {
         employeeRepository.deleteByFirstName(firstName);
