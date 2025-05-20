@@ -1,7 +1,7 @@
-package com.epam.edu;
+package com.arohau.edu;
 
-import com.epam.edu.service.SomeService;
-import com.epam.edu.service.SomeServiceImpl;
+import com.arohau.edu.service.SomeService;
+import com.arohau.edu.service.SomeServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;

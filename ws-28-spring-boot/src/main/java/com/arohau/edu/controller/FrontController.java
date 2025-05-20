@@ -1,6 +1,6 @@
-package com.epam.edu.controller;
+package com.arohau.edu.controller;
 
-import com.epam.edu.service.SomeService;
+import com.arohau.edu.service.SomeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

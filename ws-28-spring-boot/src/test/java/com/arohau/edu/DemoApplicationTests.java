@@ -1,4 +1,4 @@
-package com.epam.edu;
+package com.arohau.edu;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.epam.edu.service;
+package com.arohau.edu.service;
 
 public interface SomeService {
     String textToUppercase(String text);

@@ -1,4 +1,4 @@
-package com.epam.edu.service;
+package com.arohau.edu.service;
 
 import org.springframework.stereotype.Service;
 
